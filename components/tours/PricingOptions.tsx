@@ -3,6 +3,7 @@
 import { Users, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { localizedText } from "@/lib/utils";
+import { formatSom } from "@/lib/currency";
 import type { TourPricingOption } from "@/types";
 
 interface PricingOptionsProps {
@@ -10,15 +11,17 @@ interface PricingOptionsProps {
     selectedId: string | null;
     onSelect: (option: TourPricingOption) => void;
     lng: string;
+    usdRate: number;
     labels: {
         title: string;
         from: string;
         min_people: string;
         max_people: string;
+        som_currency: string;
     };
 }
 
-export function PricingOptions({ options, selectedId, onSelect, lng, labels }: PricingOptionsProps) {
+export function PricingOptions({ options, selectedId, onSelect, lng, usdRate, labels }: PricingOptionsProps) {
     if (!options || options.length === 0) return null;
 
     return (
@@ -53,6 +56,9 @@ export function PricingOptions({ options, selectedId, onSelect, lng, labels }: P
                             <p className="font-bold text-foreground text-sm mb-1">{label}</p>
                             <p className="text-lg font-bold text-primary">
                                 {labels.from} ${option.price}
+                            </p>
+                            <p className="text-xs text-muted-foreground">
+                                ≈ {formatSom(Number(option.price), usdRate)} {labels.som_currency}
                             </p>
                             {(option.min_people || option.max_people) && (
                                 <p className="text-xs text-muted-foreground mt-1">

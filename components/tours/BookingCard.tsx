@@ -6,11 +6,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { createBooking } from "@/lib/api";
 import { showSuccess, showError } from "@/lib/toast";
+import { formatSom } from "@/lib/currency";
 
 interface BookingCardProps {
     tourId: string;
     price: number;
     currency: string;
+    usdRate: number;
     labels: {
         from: string;
         per_person: string;
@@ -24,11 +26,12 @@ interface BookingCardProps {
         email: string;
         phone: string;
         success: string;
+        som_currency: string;
     };
     pricingOptionId?: string;
 }
 
-export function BookingCard({ tourId, price, currency, labels }: BookingCardProps) {
+export function BookingCard({ tourId, price, currency, usdRate, labels }: BookingCardProps) {
     const [date, setDate] = useState("");
     const [adults, setAdults] = useState(2);
     const [children, setChildren] = useState(0);
@@ -37,7 +40,8 @@ export function BookingCard({ tourId, price, currency, labels }: BookingCardProp
     const [phone, setPhone] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const total = price * adults + price * 0.5 * children;
+    const unitPrice = Number(price);
+    const total = unitPrice * adults + unitPrice * 0.5 * children;
 
     async function handleBook(e: React.FormEvent) {
         e.preventDefault();
@@ -69,9 +73,12 @@ export function BookingCard({ tourId, price, currency, labels }: BookingCardProp
             <div className="mb-5">
                 <span className="text-xs text-muted-foreground">{labels.from}</span>
                 <div className="flex items-baseline gap-1">
-                    <span className="text-3xl font-bold text-primary">${price}</span>
+                    <span className="text-3xl font-bold text-primary">${unitPrice}</span>
                     <span className="text-sm text-muted-foreground">/ {labels.per_person}</span>
                 </div>
+                <p className="text-sm text-muted-foreground mt-0.5">
+                    ≈ {formatSom(unitPrice, usdRate)} {labels.som_currency}
+                </p>
             </div>
 
             <form onSubmit={handleBook} className="space-y-3">
@@ -135,9 +142,14 @@ export function BookingCard({ tourId, price, currency, labels }: BookingCardProp
 
                 <div className="flex items-center justify-between text-sm pt-2 border-t border-border">
                     <span className="text-muted-foreground">{labels.total}</span>
-                    <span className="font-bold text-primary">
-                        ${total.toFixed(0)} {currency}
-                    </span>
+                    <div className="text-right">
+                        <span className="font-bold text-primary block">
+                            ${total.toFixed(0)} {currency}
+                        </span>
+                        <span className="text-xs text-muted-foreground">
+                            ≈ {formatSom(total, usdRate)} {labels.som_currency}
+                        </span>
+                    </div>
                 </div>
 
                 <Button

@@ -5,6 +5,7 @@ import { getTourBySlug, getTours } from "@/lib/api";
 import { localizedText, localizedList } from "@/lib/utils";
 import type { Metadata } from "next";
 import { getMediaUrl } from "@/lib/media";
+import { getUsdRate } from "@/lib/currency";
 import type { Tour } from "@/types";
 import { TourGallery } from "@/components/tours/TourGallery";
 import { ReviewsSection } from "@/components/tours/ReviewsSection";
@@ -61,6 +62,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function TourDetailPage({ params }: Props) {
     const { lng, slug } = await params;
     const { t } = await getT("tours", { lng });
+    const usdRate = await getUsdRate();
 
     let tour;
     try {
@@ -301,11 +303,13 @@ export default async function TourDetailPage({ params }: Props) {
                             <TourBookingPanel
                                 tour={tour}
                                 lng={lng}
+                                usdRate={usdRate}
                                 pricingLabels={{
                                     title: t("pricing.title"),
                                     from: t("pricing.from"),
                                     min_people: t("pricing.min_people"),
                                     max_people: t("pricing.max_people"),
+                                    som_currency: t("som_currency"),
                                 }}
                                 bookingLabels={{
                                     from: t("from"),
@@ -320,6 +324,7 @@ export default async function TourDetailPage({ params }: Props) {
                                     email: t("email"),
                                     phone: t("phone"),
                                     success: t("booking_success"),
+                                    som_currency: t("som_currency"),
                                 }}
                             />
                         </div>

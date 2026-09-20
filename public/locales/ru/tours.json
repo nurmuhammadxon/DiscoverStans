@@ -31,7 +31,6 @@
     "children": "Дети",
     "book_now": "Забронировать",
     "booking_in_progress": "Отправка...",
-    "total": "Итого",
     "full_name": "Имя и фамилия",
     "email": "Email",
     "phone": "Номер телефона",
@@ -70,5 +69,6 @@
     "photo_stop": "Фото-остановка",
     "guided_tour": "Экскурсия с гидом",
     "shopping": "Шоппинг",
-    "duration_minutes": "мин"
+    "duration_minutes": "мин",
+    "som_currency": "сум"
 }

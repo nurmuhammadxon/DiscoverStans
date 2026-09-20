@@ -31,7 +31,6 @@
     "children": "Bolalar",
     "book_now": "Band qilish",
     "booking_in_progress": "Yuborilmoqda...",
-    "total": "Jami",
     "full_name": "Ism Familiya",
     "email": "Email",
     "phone": "Telefon raqam",
@@ -70,5 +69,7 @@
     "photo_stop": "Foto to'xtash",
     "guided_tour": "Gid bilan sayohat",
     "shopping": "Xarid qilish",
-    "duration_minutes": "daqiqa"
+    "duration_minutes": "daqiqa",
+    "total": "Jami",
+    "som_currency": "so'm"
 }

@@ -1,5 +1,6 @@
 import { getT } from "next-i18next/server";
 import { LegalDocument } from "@/components/legal/LegalDocument";
+import { OperatorCertificate } from "@/components/legal/OperatorCertificate";
 import { privacyContent } from "@/lib/legal/privacy";
 import type { Metadata } from "next";
 
@@ -34,10 +35,18 @@ export default async function PrivacyPage({ params }: Props) {
     const isRuFallback = lng === "ru";
 
     return (
-        <LegalDocument
-            title={t("privacy_title")}
-            content={privacyContent[contentLocale]}
-            ruFallbackNotice={isRuFallback ? t("ru_fallback_notice") : undefined}
-        />
+        <>
+            <LegalDocument
+                title={t("privacy_title")}
+                content={privacyContent[contentLocale]}
+                ruFallbackNotice={isRuFallback ? t("ru_fallback_notice") : undefined}
+            />
+            <OperatorCertificate
+                title={t("certificate_title")}
+                description={t("certificate_description")}
+                zoomHint={t("certificate_zoom_hint")}
+                closeLabel={t("certificate_close")}
+            />
+        </>
     );
 }

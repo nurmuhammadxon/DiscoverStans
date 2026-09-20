@@ -31,7 +31,6 @@
     "children": "Children",
     "book_now": "Book now",
     "booking_in_progress": "Submitting...",
-    "total": "Total",
     "full_name": "Full name",
     "email": "Email",
     "phone": "Phone number",
@@ -70,5 +69,7 @@
     "photo_stop": "Photo stop",
     "guided_tour": "Guided tour",
     "shopping": "Shopping",
-    "duration_minutes": "min"
+    "duration_minutes": "min",
+    "total": "Total",
+    "som_currency": "UZS"
 }
