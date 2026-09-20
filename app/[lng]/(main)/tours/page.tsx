@@ -43,6 +43,7 @@ export default async function ToursPage({ params, searchParams }: Props) {
 
     let tours: Awaited<ReturnType<typeof getTours>>["items"] = [];
     let loadError: string | null = null;
+    let total = 0;
 
     try {
         const response = await getTours({
@@ -54,6 +55,7 @@ export default async function ToursPage({ params, searchParams }: Props) {
             page_size: 24,
         });
         tours = response.items;
+        total = response.total;
     } catch (err) {
         loadError = err instanceof Error ? err.message : "Xatolik yuz berdi";
     }
@@ -81,7 +83,7 @@ export default async function ToursPage({ params, searchParams }: Props) {
             <div className="mx-auto max-w-7xl px-4">
                 <div className="mb-10">
                     <Suspense fallback={null}>
-                        <TourFilters resultCount={tours.length} />
+                        <TourFilters resultCount={total} />
                     </Suspense>
                 </div>
 

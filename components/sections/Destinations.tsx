@@ -114,13 +114,20 @@ export function Destinations({ countries }: DestinationsProps) {
                     const imageUrl = getMediaUrl(dest.cover_image);
 
                     return (
-                        <Button
+                        <div
                             key={dest.slug}
-                            type="button"
+                            role="button"
+                            tabIndex={visible ? 0 : -1}
                             onClick={() => (isCenter ? undefined : goTo(i))}
+                            onKeyDown={(e) => {
+                                if (e.key === "Enter" || e.key === " ") {
+                                    e.preventDefault();
+                                    if (!isCenter) goTo(i);
+                                }
+                            }}
                             aria-label={destName}
                             className={cn(
-                                "absolute top-1/2 left-1/2 w-55 md:w-70 h-75 md:h-95 rounded-3xl overflow-hidden shadow-xl transition-all duration-500 ease-out cursor-grab",
+                                "absolute top-1/2 left-1/2 w-55 md:w-70 h-75 md:h-95 rounded-3xl overflow-hidden shadow-xl bg-muted transition-all duration-500 ease-out cursor-grab",
                                 !visible && "opacity-0 pointer-events-none"
                             )}
                             style={{
@@ -150,7 +157,7 @@ export function Destinations({ countries }: DestinationsProps) {
 
                                 {isCenter && (
                                     <Link
-                                        href={localizedHref(lng, `/tours?destination=${dest.slug}`)}
+                                        href={localizedHref(lng, `/tours?country=${dest.slug}`)}
                                         onClick={(e) => e.stopPropagation()}
                                         className="mt-4 inline-flex items-center gap-2 self-start rounded-full bg-white/95 text-primary text-sm font-semibold px-5 py-2.5 hover:bg-white transition-colors"
                                     >
@@ -159,7 +166,7 @@ export function Destinations({ countries }: DestinationsProps) {
                                     </Link>
                                 )}
                             </div>
-                        </Button>
+                        </div>
                     );
                 })}
             </div>
