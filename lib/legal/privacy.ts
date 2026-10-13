@@ -84,7 +84,6 @@ Ijrochi ushbu Maxfiylik siyosatiga istalgan vaqtda o'zgartirish kiritish huquqig
 
 ---
 
-*Ushbu matn namuna sifatida tayyorlangan. Rasman e'lon qilishdan oldin, ayniqsa to'lov tizimlari (Payme/Click/Ipak Yuli Bank) talab qiladigan aniq shartlar va O'zbekiston Respublikasi "Shaxsga doir ma'lumotlar to'g'risida"gi Qonuniga to'liq muvofiqlikni tasdiqlash uchun malakali yurist tomonidan ko'rib chiqilishi tavsiya etiladi.*
 `,
     en: `# PRIVACY POLICY
 

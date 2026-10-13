@@ -112,7 +112,6 @@ Aloqa: +998 99 343 40 94, discoverstans.uz@gmail.com
 
 ---
 
-*Ushbu matn namuna sifatida tayyorlangan. Rasman e'lon qilishdan oldin O'zbekiston qonunchiligi bo'yicha malakali yurist tomonidan ko'rib chiqilishi tavsiya etiladi, ayniqsa bank rekvizitlari, aniq STIR/JSHSHIR va o'ziga xos biznes shartlari (bekor qilish muddatlari va h.k.) bo'yicha.*
 `,
     en: `# PUBLIC OFFER AGREEMENT
 ## (Discover Stans Travel Services Agreement)
