@@ -27,8 +27,8 @@ export const siteConfig = {
 
     contact: {
         email: "discoverstans.uz@gmail.com",
-        phone: "+998 90 123 45 67",
-        phoneSecondary: "+998 99 343 40 94",
+        phone: "+998 99 343 40 94",
+        phoneSecondary: "+998 94 873 16 11",
         address: {
             uz: "Samarqand, O'zbekiston",
             ru: "Самарканд, Узбекистан",
